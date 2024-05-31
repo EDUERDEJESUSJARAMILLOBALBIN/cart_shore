@@ -67,6 +67,8 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'mongoid-rspec'
+  gem 'rails-controller-testing'
 
 end
   gem 'mongoid', '~> 7.3'
