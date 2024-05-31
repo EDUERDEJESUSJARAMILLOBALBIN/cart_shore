@@ -1,0 +1,27 @@
+<h1>Created Orders</h1>
+
+<% if @orderables_grouped_by_order.empty? %>
+  <p>No orders created.</p>
+<% else %>
+  <% @orderables_grouped_by_order.each do |order_code, orderables| %>
+    <h2>Order: <%= order_code %></h2>
+    <p>Order Total: <%= @order_totals[order_code] %></p>
+    <ul>
+      <% orderables.each do |orderable| %>
+        <li>
+          Product: <%= orderable.product.name %> - Quantity: <%= orderable.quantity %>
+          <br>
+          Unit Price: <%= orderable.product.price %> - Total Price: <%= orderable.total %>
+          <br>
+          Cart ID: <%= orderable.cart.id %>
+        </li>
+      <% end %>
+    </ul>
+    <%= button_to 'Delete Order', delete_order_orderables_path(order_code: order_code), method: :delete, data: { confirm: 'Are you sure you want to delete this order?' } %>
+  <% end %>
+  <h3>Total of All Orders: <%= @total_all_orders %></h3>
+<% end %>
+
+<div>
+  <%= link_to 'Back to products', products_path %>
+</div>

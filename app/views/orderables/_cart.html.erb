@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "cart" do %>
+  <h1>Cart</h1>
+  <% if @cart_items.any? %>
+    <%= render "cart/orderables", orderables: @cart_items %>
+    <p>Total: <%= @cart_items.sum(&:total) %></p>
+    <%= button_to "Save order", create_order_orderables_path, method: :post %>
+  <% else %>
+    <p>Your cart is empty</p>
+  <% end %>
+<% end %>

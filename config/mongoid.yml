@@ -1,0 +1,17 @@
+development:
+  clients:
+    default:
+      database: <%= ENV['NAME_DATABASE'] %>
+      hosts:
+        - <%= ENV['HOST_DATABASE'] %>:<%= ENV['PORT_DATABASE'] %>
+      options:
+        server_selection_timeout: 5
+
+test:
+  clients:
+    default:
+      database: <%= ENV['NAME_DATABASE_TEST'] %>
+      hosts:
+        - <%= ENV['HOST_DATABASE'] %>:<%= ENV['PORT_DATABASE'] %>
+      options:
+        server_selection_timeout: 5

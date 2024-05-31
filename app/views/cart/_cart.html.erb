@@ -1,0 +1,11 @@
+<%= turbo_frame_tag "cart" do %>
+  <h1>Cart</h1>
+  <% orderables_to_display = @cart.orderables.where(order_created: false) %>
+  <% if orderables_to_display.any? %>
+    <%= render partial: "cart/orderables", locals: { orderables: orderables_to_display } %>
+    <p>Total: <%= orderables_to_display.sum(&:total) %></p>
+    <%= button_to "Save order", create_order_orderables_path, method: :post %>
+  <% else %>
+    <p>Your cart is empty</p>
+  <% end %>
+<% end %>
